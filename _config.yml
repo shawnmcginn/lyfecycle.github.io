@@ -1,8 +1,52 @@
-title: Hacker theme
-description: Hacker is a theme for GitHub Pages.
-show_downloads: true
-google_analytics:
-theme: jekyll-theme-hacker
-remote_theme: pages-themes/hacker@v0.2.0
+# Site settings
+title: Lyfecycle
+description: IT Consulting Services<br>Cybersecurity, Software Engineering, and Server Management solutions
+
+url: https://lyfecycle.github.io # Update with your site's URL
+baseurl: "" # Leave empty if deploying to the root of the domain
+
+background-image: url("/assets/images/keyboard.webp");
+
+
+
+# Theme settings
+theme: jekyll-theme-midnight
+show_downloads: false
+
+# Google Analytics (replace with your tracking ID)
+google_analytics: UA-XXXXXXXXX-X
+
+# Social links (optional)
+# social_links:
+#   twitter: https://twitter.com/yourusername
+#   github: https://github.com/yourusername
+#   linkedin: https://linkedin.com/in/yourusername
+
+# Markdown settings
+markdown: kramdown
+highlighter: rouge
+
+# Plugins (add any Jekyll plugins you need)
 plugins:
-- jekyll-remote-theme # add this line to the plugins list if you already have one
+  # - jekyll-feed
+  - jekyll-seo-tag
+
+# Exclude files or directories from the build
+exclude:
+  - README.md
+  - node_modules
+  - Gemfile
+  - Gemfile.lock
+
+# Defaults for posts
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Your Name"
+
+# Pagination settings
+paginate: 5
+paginate_path: "/page:num/"
