@@ -1,7 +1,7 @@
 ---
 layout: default
 --- 
-|**Expert Cybersecurity Consulting**<br><br>At Lyfecycle, we provide top-notch cybersecurity consulting services to protect your business from potential threats. Our team of professionals is dedicated to ensuring your systems are secure and compliant with industry standards. | ![phone](/assets/images/phone.webp) |
+|**Expert Cybersecurity Consulting**<br><br>At Lyfecycle, we provide top-notch cybersecurity consulting services to protect your business from potential threats. Our team of professionals is dedicated to ensuring your systems are secure and compliant with industry standards. | ![phone](./assets/images/phone.webp) |
 
 <!-- Text can be **bold**, _italic_, or ~~strikethrough~~. -->
 
