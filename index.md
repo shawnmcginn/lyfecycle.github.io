@@ -6,9 +6,9 @@ layout: default
 <!-- Text can be **bold**, _italic_, or ~~strikethrough~~. -->
 
   
-&nbsp;&nbsp;&nbsp;[CapRateCalc privacy policy](./privacy_capratecalc.html)
+&nbsp;&nbsp;&nbsp;[CapRateCalc privacy policy](./privacy-capratecalc.html)
 
-&nbsp;&nbsp;&nbsp;[Politique de confidentialité de CapRateCalc](./privacy_fr_capratecalc.html)
+&nbsp;&nbsp;&nbsp;[Politique de confidentialité de CapRateCalc](./privacy-fr-capratecalc.html)
 
 <!-- There should be whitespace between paragraphs. -->
 
