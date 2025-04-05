@@ -2,8 +2,8 @@
 title: Lyfecycle
 description: IT Consulting Services<br>Cybersecurity, Software Engineering, and Server Management solutions
 
-url: https://shawnmcginn.github.io # Update with your site's URL
-baseurl: "/lyfecycle.github.io" # Leave empty if deploying to the root of the domain
+url: https://lyfecycle.ca # Update with your site's URL
+baseurl: "" # Leave empty if deploying to the root of the domain
 
 # background-image: url("/assets/images/keyboard.webp");
 
