@@ -10,6 +10,8 @@ layout: default
 
 &nbsp;&nbsp;&nbsp;[Politique de confidentialité de CapRateCalc](./privacy-fr-capratecalc.html)
 
+&nbsp;&nbsp;&nbsp;[Shawn McGinn Resume](./mcginnResume2025.pdf)
+
 <!-- There should be whitespace between paragraphs. -->
 
 <!-- There should be whitespace between paragraphs. We recommend including a README, or a file with information about your project. -->
