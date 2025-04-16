@@ -10,7 +10,7 @@ layout: default
 
 &nbsp;&nbsp;&nbsp;[Politique de confidentialité de CapRateCalc](./privacy-fr-capratecalc.html)
 
-&nbsp;&nbsp;&nbsp;[Shawn McGinn Resume](./mcginnResume2025.pdf)
+&nbsp;&nbsp;&nbsp;[Shawn McGinn Resume](./resume.html)
 
 <!-- There should be whitespace between paragraphs. -->
 
