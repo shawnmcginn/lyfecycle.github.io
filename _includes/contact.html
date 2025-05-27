@@ -1,13 +1,6 @@
 <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; padding: 20px;">
     <!-- Contact Form -->
-    <form style="flex: 1;" name="contact" method="POST" action="/" data-netlify="true" data-netlify-honeypot="bot-field">
-        <!-- Hidden spam protection fields -->
-        <input type="hidden" name="form-name" value="contact">
-        <div style="display: none;">
-            <label>
-                Don’t fill this out if you're human: <input name="bot-field" />
-            </label>
-        </div>
+    <form style="flex: 1;" action="https://formspree.io/f/xpwpykna" method="POST" id="contact-form">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_next" value="https://lyfecycle.ca/">
         <input type="hidden" name="_subject" value="New contact form submission">
@@ -29,41 +22,7 @@
     </form>
 
     <script>
-        // Success message handler
-        document.addEventListener('DOMContentLoaded', function() {
-            const form = document.getElementById('contact-form');
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const submitButton = form.querySelector('button[type="submit"]');
-                submitButton.disabled = true;
-                submitButton.textContent = 'Sending...';
-                
-                fetch('/.netlify/functions/form-handler', {
-                    method: 'POST',
-                    headers: { 'Accept': 'application/json' },
-                    body: new FormData(form)
-                })
-                .then(() => {
-                    submitButton.textContent = 'Sent!';
-                    submitButton.style.backgroundColor = '#28a745';
-                    setTimeout(() => {
-                        form.reset();
-                        submitButton.textContent = 'Send';
-                        submitButton.style.backgroundColor = '#007bff';
-                        submitButton.disabled = false;
-                    }, 3000);
-                })
-                .catch(error => {
-                    submitButton.textContent = 'Error';
-                    submitButton.style.backgroundColor = '#dc3545';
-                    setTimeout(() => {
-                        submitButton.textContent = 'Send';
-                        submitButton.style.backgroundColor = '#007bff';
-                        submitButton.disabled = false;
-                    }, 3000);
-                });
-            });
-        });
+
     </script>
 
     <!-- Contact Info -->
