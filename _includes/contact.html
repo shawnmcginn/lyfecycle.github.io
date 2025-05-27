@@ -17,41 +17,52 @@
 
         <div id="recaptcha-container"></div>
         <br>
-        <button type="submit" style="padding: 10px 20px; background-color: #007BFF; color: white; border: none;">Send</button>
+
+
+        <button type="submit" style="padding: 10px 20px; background-color: #007BFF; color: white; border: none;"
+        class="g-recaptcha" 
+        data-sitekey="reCAPTCHA_site_key" 
+        data-callback='onSubmit' 
+        data-action='submit'>Send</button>
+
+
     </form>
 
-    <!-- Add the reCAPTCHA script -->
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+
     <script>
-        // Check if we're in production or local
-        const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-
-        // Initialize reCAPTCHA only in production
-        if (!isLocal) {
-            // Load reCAPTCHA script
-            const script = document.createElement('script');
-            script.src = 'https://www.google.com/recaptcha/api.js?render=6Ld7UgorAAAAAIyFc5F5uXVgeEuZ2XCLA4XydqI4';
-            script.async = true;
-            script.defer = true;
-            document.body.appendChild(script);
-
-            // Initialize reCAPTCHA
-            script.onload = function() {
-                window.grecaptcha.ready(function() {
-                    // Get token first
-                    grecaptcha.execute('6Ld7UgorAAAAAIyFc5F5uXVgeEuZ2XCLA4XydqI4', {action: 'contact_form'})
-                        .then(function(token) {
-                            console.log('reCAPTCHA token generated:', token); // Debugging log
-                            // Add the token to the form
-                            var recaptchaResponse = document.createElement('input');
-                            recaptchaResponse.type = 'hidden';
-                            recaptchaResponse.name = 'g-recaptcha-response';
-                            recaptchaResponse.value = token;
-                            document.getElementById('contact-form').appendChild(recaptchaResponse);
-                        });
-                });
-            };
-        }
+    function onSubmit(token) {
+        document.getElementById("contact-form").submit();
+    }
     </script>
+
+
+    <!-- Add the reCAPTCHA script
+    <script>
+        // Load reCAPTCHA script
+        const script = document.createElement('script');
+        script.src = 'https://www.google.com/recaptcha/api.js?render=6Ld7UgorAAAAAIyFc5F5uXVgeEuZ2XCLA4XydqI4';
+        script.async = true;
+        script.defer = true;
+        document.body.appendChild(script);
+
+        // Initialize reCAPTCHA
+        script.onload = function() {
+            window.grecaptcha.ready(function() {
+                // Get token first
+                grecaptcha.execute('6Ld7UgorAAAAAIyFc5F5uXVgeEuZ2XCLA4XydqI4', {action: 'contact_form'})
+                    .then(function(token) {
+                        console.log('reCAPTCHA token generated:', token); // Debugging log
+                        // Add the token to the form
+                        var recaptchaResponse = document.createElement('input');
+                        recaptchaResponse.type = 'hidden';
+                        recaptchaResponse.name = 'g-recaptcha-response';
+                        recaptchaResponse.value = token;
+                        document.getElementById('contact-form').appendChild(recaptchaResponse);
+                    });
+            });
+        };
+    </script> -->
 
     <!-- Contact Info -->
     <div style="flex: 1; text-align: right;">
