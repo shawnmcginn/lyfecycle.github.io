@@ -1,13 +1,13 @@
 <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; padding: 20px;">
     <!-- Contact Form -->
-    <form style="flex: 1;" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+    <form style="flex: 1;" name="contact" method="POST" action="/" data-netlify="true" data-netlify-honeypot="bot-field">
         <!-- Hidden spam protection fields -->
         <input type="hidden" name="form-name" value="contact">
-        <p class="hidden">
+        <div style="display: none;">
             <label>
                 Don’t fill this out if you're human: <input name="bot-field" />
             </label>
-        </p>
+        </div>
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_next" value="https://lyfecycle.ca/">
         <input type="hidden" name="_subject" value="New contact form submission">
@@ -38,7 +38,7 @@
                 submitButton.disabled = true;
                 submitButton.textContent = 'Sending...';
                 
-                fetch('/', {
+                fetch('/.netlify/functions/form-handler', {
                     method: 'POST',
                     headers: { 'Accept': 'application/json' },
                     body: new FormData(form)
