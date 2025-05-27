@@ -18,9 +18,7 @@
         <div id="recaptcha-container"></div>
         <br>
 
-
-        <button type="submit" style="padding: 10px 20px; background-color: #007BFF; color: white; border: none;" class="g-recaptcha" data-sitekey="6Ld7UgorAAAAAIyFc5F5uXVgeEuZ2XCLA4XydqI4"  data-callback='onSubmit' data-action='submit'>Send</button>
-
+        <button type="submit" class="g-recaptcha" data-sitekey="6Ld7UgorAAAAAIyFc5F5uXVgeEuZ2XCLA4XydqI4" data-callback='onSubmit' data-action='submit' style="padding: 10px 20px; background-color: #007BFF; color: white; border: none;">Send</button>
 
     </form>
 
@@ -33,32 +31,12 @@
     </script> -->
 
 
-    <!-- Add the reCAPTCHA script
     <script>
-        // Load reCAPTCHA script
-        const script = document.createElement('script');
-        script.src = 'https://www.google.com/recaptcha/api.js?render=6Ld7UgorAAAAAIyFc5F5uXVgeEuZ2XCLA4XydqI4';
-        script.async = true;
-        script.defer = true;
-        document.body.appendChild(script);
-
-        // Initialize reCAPTCHA
-        script.onload = function() {
-            window.grecaptcha.ready(function() {
-                // Get token first
-                grecaptcha.execute('6Ld7UgorAAAAAIyFc5F5uXVgeEuZ2XCLA4XydqI4', {action: 'contact_form'})
-                    .then(function(token) {
-                        console.log('reCAPTCHA token generated:', token); // Debugging log
-                        // Add the token to the form
-                        var recaptchaResponse = document.createElement('input');
-                        recaptchaResponse.type = 'hidden';
-                        recaptchaResponse.name = 'g-recaptcha-response';
-                        recaptchaResponse.value = token;
-                        document.getElementById('contact-form').appendChild(recaptchaResponse);
-                    });
-            });
-        };
-    </script> -->
+    function onSubmit() {
+        document.getElementById("contact-form").submit();
+    }
+</script>
+<script src="https://www.google.com/recaptcha/api.js"></script>
 
     <!-- Contact Info -->
     <div style="flex: 1; text-align: right;">
