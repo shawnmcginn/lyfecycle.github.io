@@ -16,25 +16,20 @@
         <label for="message">Message:</label><br>
         <textarea id="message" name="message" rows="5" style="width: 100%; margin-bottom: 10px;" required></textarea><br>
 
-        <div class="g-recaptcha" data-sitekey="6Ld7UgorAAAAAIyFc5F5uXVgeEuZ2XCLA4XydqI4"></div>
+        <div id="recaptcha-container"></div>
         <br>
 
-        <button type="submit" style="padding: 10px 20px; background-color: #007BFF; color: white; border: none;">Send</button>
+        <button type="submit" class="g-recaptcha" data-sitekey="6Ld7UgorAAAAAIyFc5F5uXVgeEuZ2XCLA4XydqI4" data-callback='onSubmit' data-action='submit' style="padding: 10px 20px; background-color: #007BFF; color: white; border: none;">Send</button>
 
     </form>
 
     <script>
-        // Initialize reCAPTCHA
-        function onloadCallback() {
-            grecaptcha.render('recaptcha-container', {
-                'sitekey': '6Ld7UgorAAAAAIyFc5F5uXVgeEuZ2XCLA4XydqI4',
-                'callback': function(response) {
-                    document.getElementById('g-recaptcha-response').value = response;
-                }
-            });
+        function onSubmit(token) {
+            document.getElementById("g-recaptcha-response").value = token;
+            document.getElementById("contact-form").submit();
         }
     </script>
-    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6Ld7UgorAAAAAIyFc5F5uXVgeEuZ2XCLA4XydqI4" async defer></script>
 
     <!-- Contact Info -->
     <div style="flex: 1; text-align: right;">
