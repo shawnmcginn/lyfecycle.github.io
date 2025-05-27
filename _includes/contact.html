@@ -21,13 +21,34 @@
             // Check if we're in production or local
             const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
             
+            // Initialize reCAPTCHA only in production
             if (!isLocal) {
-                // Load reCAPTCHA only in production
+                // Load reCAPTCHA script
                 const script = document.createElement('script');
                 script.src = 'https://www.google.com/recaptcha/api.js?render=6Ld7UgorAAAAAIyFc5F5uXVgeEuZ2XCLA4XydqI4';
                 script.async = true;
                 script.defer = true;
                 document.body.appendChild(script);
+
+                // Initialize reCAPTCHA
+                window.grecaptcha.ready(function() {
+                    // Get token first
+                    grecaptcha.execute('6Ld7UgorAAAAAIyFc5F5uXVgeEuZ2XCLA4XydqI4', {action: 'contact_form'})
+                        .then(function(token) {
+                            // Add the token to the form
+                            var recaptchaResponse = document.createElement('input');
+                            recaptchaResponse.type = 'hidden';
+                            recaptchaResponse.name = 'g-recaptcha-response';
+                            recaptchaResponse.value = token;
+                            document.getElementById('contact-form').appendChild(recaptchaResponse);
+
+                            // Now that we have the token, enable form submission
+                            document.getElementById('contact-form').addEventListener('submit', handleSubmit);
+                        });
+                });
+            } else {
+                // In local development, just enable form submission
+                document.getElementById('contact-form').addEventListener('submit', handleSubmit);
             }
 
             // Handle form submission
@@ -64,24 +85,6 @@
                 })
                 .catch(error => {
                     alert('Oops! Something went wrong. Please try again.');
-                });
-            }
-
-            // Initialize form submission
-            document.getElementById('contact-form').addEventListener('submit', handleSubmit);
-
-            // Initialize reCAPTCHA only in production
-            if (!isLocal) {
-                window.grecaptcha.ready(function() {
-                    grecaptcha.execute('6Ld7UgorAAAAAIyFc5F5uXVgeEuZ2XCLA4XydqI4', {action: 'contact_form'})
-                        .then(function(token) {
-                            // Add the token to the form
-                            var recaptchaResponse = document.createElement('input');
-                            recaptchaResponse.type = 'hidden';
-                            recaptchaResponse.name = 'g-recaptcha-response';
-                            recaptchaResponse.value = token;
-                            document.getElementById('contact-form').appendChild(recaptchaResponse);
-                        });
                 });
             }
         </script>
