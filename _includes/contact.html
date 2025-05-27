@@ -1,7 +1,13 @@
 <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; padding: 20px;">
     <!-- Contact Form -->
-    <form style="flex: 1;" action="https://formspree.io/f/xpwpykna" method="POST" id="contact-form">
-        <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
+    <form style="flex: 1;" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+        <!-- Hidden spam protection fields -->
+        <input type="hidden" name="form-name" value="contact">
+        <p class="hidden">
+            <label>
+                Don’t fill this out if you're human: <input name="bot-field" />
+            </label>
+        </p>
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_next" value="https://lyfecycle.ca/">
         <input type="hidden" name="_subject" value="New contact form submission">
@@ -16,30 +22,49 @@
         <label for="message">Message:</label><br>
         <textarea id="message" name="message" rows="5" style="width: 100%; margin-bottom: 10px;" required></textarea><br>
 
-        <div id="recaptcha-container"></div>
         <br>
 
-        <button type="submit" id="submit-btn" style="padding: 10px 20px; background-color: #007BFF; color: white; border: none;" disabled>Send</button>
+        <button type="submit" style="padding: 10px 20px; background-color: #007BFF; color: white; border: none;">Send</button>
 
     </form>
 
     <script>
-        // Initialize reCAPTCHA
-        function onloadCallback() {
-            grecaptcha.render('recaptcha-container', {
-                'sitekey': '6LfSvworAAAAAEQmYD7HQtU0wRX6icQHadEkiNxf',
-                'callback': function(response) {
-                    document.getElementById('submit-btn').disabled = false;
-                    document.getElementById('submit-btn').style.cursor = 'pointer';
-                },
-                'expired-callback': function() {
-                    document.getElementById('submit-btn').disabled = true;
-                    document.getElementById('submit-btn').style.cursor = 'not-allowed';
-                }
+        // Success message handler
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contact-form');
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const submitButton = form.querySelector('button[type="submit"]');
+                submitButton.disabled = true;
+                submitButton.textContent = 'Sending...';
+                
+                fetch('/', {
+                    method: 'POST',
+                    headers: { 'Accept': 'application/json' },
+                    body: new FormData(form)
+                })
+                .then(() => {
+                    submitButton.textContent = 'Sent!';
+                    submitButton.style.backgroundColor = '#28a745';
+                    setTimeout(() => {
+                        form.reset();
+                        submitButton.textContent = 'Send';
+                        submitButton.style.backgroundColor = '#007bff';
+                        submitButton.disabled = false;
+                    }, 3000);
+                })
+                .catch(error => {
+                    submitButton.textContent = 'Error';
+                    submitButton.style.backgroundColor = '#dc3545';
+                    setTimeout(() => {
+                        submitButton.textContent = 'Send';
+                        submitButton.style.backgroundColor = '#007bff';
+                        submitButton.disabled = false;
+                    }, 3000);
+                });
             });
-        }
+        });
     </script>
-    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
 
     <!-- Contact Info -->
     <div style="flex: 1; text-align: right;">

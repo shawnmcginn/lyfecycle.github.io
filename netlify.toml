@@ -1,0 +1,4 @@
+[build]
+base = ""
+directory = "_site"
+command = "jekyll build"
