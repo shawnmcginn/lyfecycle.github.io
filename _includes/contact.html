@@ -1,10 +1,8 @@
 <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; padding: 20px;">
         <!-- Contact Form -->
-        <script src="https://www.google.com/recaptcha/api.js?render=6LfSvworAAAAAEQmYD7HQtU0wRX6icQHadEkiNxf"></script>
+        <script src="https://www.google.com/recaptcha/api.js"></script>
 
         <form style="flex: 1;" action="https://formspree.io/f/xpwpykna" method="POST" id="contact-form">
-            <div class="g-recaptcha" data-sitekey="6LfSvworAAAAAEQmYD7HQtU0wRX6icQHadEkiNxf" data-callback="onSubmit"></div>
-
             <h3>Contact Us</h3>
             <label for="name">Name:</label><br>
             <input type="text" id="name" name="name" style="width: 100%; margin-bottom: 10px;" required><br>
@@ -14,9 +12,7 @@
     
             <label for="message">Message:</label><br>
             <textarea id="message" name="message" rows="5" style="width: 100%; margin-bottom: 10px;" required></textarea><br>
-    
-            <input type="submit" value="Send">
-
+            <button class="g-recaptcha" data-sitekey="6LfSvworAAAAAEQmYD7HQtU0wRX6icQHadEkiNxf" data-callback="onSubmit">Send</button>
         </form>
    <!-- Contact Info -->
    <div style="flex: 1; text-align: right;">
